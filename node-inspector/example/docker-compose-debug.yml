@@ -1,0 +1,18 @@
+version: "2"
+services:
+    inspector-source:
+        image: pgraemer/node-inspector:latest
+
+    app:
+        extends:
+            file: docker-compose.yml
+            service: app
+        cmd: node --debug server.js
+        volumes_from:
+            - inspector-source
+
+    inspector:
+        image: pgraemer/node-inspector:latest
+        network_mode: "service:app"
+        volumes_from:
+            - app
