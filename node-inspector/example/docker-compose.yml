@@ -1,4 +1,10 @@
 version: "2"
 services:
-    app:
-        image: oyyd/node-express-example
+  app:
+    build: ./app
+    volumes:
+      - "./app:/src/app"
+
+    ports:
+      - "80:8080"
+
