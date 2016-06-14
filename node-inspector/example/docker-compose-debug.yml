@@ -7,7 +7,7 @@ services:
         extends:
             file: docker-compose.yml
             service: app
-        cmd: node --debug server.js
+        command: node --debug server.js
         volumes_from:
             - inspector-source
 
